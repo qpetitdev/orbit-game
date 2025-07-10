@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dysp371cjgrou"]
+
+[ext_resource type="Script" uid="uid://cueynb7wvusm1" path="res://Scenes/Ball/ball.gd" id="1_1rrwo"]
+[ext_resource type="SpriteFrames" uid="uid://b3jgq6tlekb3x" path="res://Resources/ball_rebound.tres" id="3_xvxvg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1rrwo"]
+radius = 17.0
+
+[node name="Ball" type="Area2D"]
+script = ExtResource("1_1rrwo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.6, 1.6)
+sprite_frames = ExtResource("3_xvxvg")
+animation = &"rebound"
+frame = 16
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1rrwo")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

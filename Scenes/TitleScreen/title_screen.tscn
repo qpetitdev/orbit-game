@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://bw74ea1t2idxf"]
+
+[ext_resource type="Script" uid="uid://oruqstoynexf" path="res://Scenes/TitleScreen/title_screen.gd" id="1_81d0i"]
+[ext_resource type="Texture2D" uid="uid://cnyj8lfw384w7" path="res://Assets/background_big_star.png" id="1_tg6gk"]
+[ext_resource type="FontFile" uid="uid://msct6nm3lan" path="res://Assets/fonts/Moonstar.ttf" id="2_i5fww"]
+[ext_resource type="AudioStream" uid="uid://bioybmhfhan3x" path="res://Assets/sounds/title_screen.mp3" id="4_e2iei"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_81d0i"]
+font = ExtResource("2_i5fww")
+font_size = 150
+
+[sub_resource type="LabelSettings" id="LabelSettings_i5fww"]
+font = ExtResource("2_i5fww")
+font_size = 50
+
+[node name="TitleScreen" type="CanvasLayer"]
+script = ExtResource("1_81d0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("1_tg6gk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Orbit"
+label_settings = SubResource("LabelSettings_81d0i")
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Press enter to play"
+label_settings = SubResource("LabelSettings_i5fww")
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_e2iei")
+volume_db = -1.0
+autoplay = true
+parameters/looping = true
